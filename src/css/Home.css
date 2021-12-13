@@ -1,16 +1,7 @@
-.home-main{
-    margin-top: 10vh;
+.btn-div{
+    background-color: skyblue;
+    padding: 20px;
 }
-.table{
-    margin: 100px;
-}
-.book-btn{
-    background-color: green;
-    color: white;
-    min-width: 100px;
-    float: left;
-    height: 50px;
-    margin: 30px 100px 30px 100px;
-    font-size: 16px;
-    font-weight: 900;
+.btn-return{
+    color: slateblue;
 }

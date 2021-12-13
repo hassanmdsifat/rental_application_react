@@ -3,7 +3,8 @@ import ReantalTable from "./RentalTable";
 import './../css/Home.css';
 import axios from 'axios';
 import BookButton from "./BookingButton";
-import {Row} from 'react-bootstrap';
+import {Row, Container, Col} from 'react-bootstrap';
+import ToastComponent from "./Toaster";
 
 
 const API = 'http://0.0.0.0:8060/api/';
@@ -29,14 +30,21 @@ class HomePage extends Component{
     }
     render(){
         return (
-            <div className="home-main">
-                <div className="table">
-                    <ReantalTable tableData={this.state.tableData}></ReantalTable>
-                </div>
-                <Row className="mx-0">
-                    <BookButton reloadTable={this.reloadTableData}></BookButton>
+            <Container>
+                <Row className="mt-2 pt-2 btn-div">
+                    <Col lg={6}>
+                        <BookButton reloadTable={this.reloadTableData}></BookButton>
+                    </Col>
+                    <Col lg={6}>
+                        <BookButton reloadTable={this.reloadTableData} className="btn-return"></BookButton>
+                    </Col>
                 </Row>
-            </div>
+                <Row className="table">
+                    <ReantalTable tableData={this.state.tableData}></ReantalTable>
+                </Row>
+                <ToastComponent/>
+            </Container>
+            
         );
     }
 }
