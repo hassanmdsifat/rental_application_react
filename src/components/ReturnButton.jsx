@@ -3,8 +3,8 @@ import {Button} from 'react-bootstrap';
 import ReturnModal from './ReturnModal';
 import axios from 'axios';
 import {toast} from 'react-toastify';
+import { API_URL } from '../settings/config';
 
-const API = 'http://0.0.0.0:8060/api/';
 
 class ReturnButton extends Component{
     constructor(props){
@@ -17,7 +17,7 @@ class ReturnButton extends Component{
         this.handleClose = this.handleClose.bind(this);
     }
     handleOnClick(){
-        axios.get(API + 'product/?availability=false')
+        axios.get(API_URL + 'product/?availability=false')
         .then(result => {
             if(result.status === 200){
                 console.log(result.data);

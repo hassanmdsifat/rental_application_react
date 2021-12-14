@@ -4,8 +4,7 @@ import './../css/Home.css';
 import axios from 'axios';
 import BookingModal from "./BookingModal";
 import {Button} from 'react-bootstrap';
-
-const API = 'http://0.0.0.0:8060/api/';
+import { API_URL } from '../settings/config';
 
 class BookButton extends Component{
     constructor(props) {
@@ -18,7 +17,7 @@ class BookButton extends Component{
         }
       }
     handleClick(){
-        axios.get(API + 'product/?availability=true')
+        axios.get(API_URL + 'product/?availability=true')
         .then(result => {
             if(result.status === 200){
                 this.setState({

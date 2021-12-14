@@ -7,9 +7,8 @@ import {Row, Container, Col} from 'react-bootstrap';
 import ToastComponent from "./Toaster";
 import ReturnButton from "./ReturnButton";
 import SearchButton from "./SearchButton";
+import { API_URL } from "../settings/config";
 
-
-const API = 'http://0.0.0.0:8060/api/';
 
 class HomePage extends Component{
     constructor(props) {
@@ -21,11 +20,10 @@ class HomePage extends Component{
         this.reloadTableData();
     }
     reloadTableData(searchValue=''){
-        let url = API + 'product/';
+        let url = API_URL + 'product/';
         if(searchValue){
             url += '?search=' + searchValue;
         }
-        console.log("Reloding Table");
         axios.get(url)
         .then(result => {
             this.setState({

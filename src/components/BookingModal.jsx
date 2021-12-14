@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import {Modal, Button, Form, Row, Col} from 'react-bootstrap';
 import axios from 'axios';
 import {toast} from 'react-toastify';
+import { API_URL } from "../settings/config";
 
-const API = 'http://0.0.0.0:8060/api/';
 
 class BookingModal extends Component{
     constructor(props){
@@ -111,7 +111,7 @@ class BookingModal extends Component{
         return has_error
     }
     getEstimatedPrice(){
-        let url = API + 'product/' + this.state.selectedProduct + '/price/?from_date='+ this.state.rentalDate + '&to_date='+this.state.returenDate;
+        let url = API_URL + 'product/' + this.state.selectedProduct + '/price/?from_date='+ this.state.rentalDate + '&to_date='+this.state.returenDate;
         axios.get(url)
         .then(result => {
             if(result.status == 200){
@@ -132,7 +132,7 @@ class BookingModal extends Component{
         })});
     }
     handleRent(){
-        var url = API + 'product/' + this.state.selectedProduct + '/book/';
+        var url = API_URL + 'product/' + this.state.selectedProduct + '/book/';
         var postData = {
             'rental_date': this.state.rentalDate,
             'return_date': this.state.returenDate
