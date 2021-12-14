@@ -57,6 +57,7 @@ class ReantalTable extends Component{
             <DataTable
                 columns={columns}
                 data={this.props.tableData}
+                pagination
             />
         );
     }

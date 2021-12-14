@@ -5,6 +5,8 @@ import axios from 'axios';
 import BookButton from "./BookingButton";
 import {Row, Container, Col} from 'react-bootstrap';
 import ToastComponent from "./Toaster";
+import ReturnButton from "./ReturnButton";
+import SearchButton from "./SearchButton";
 
 
 const API = 'http://0.0.0.0:8060/api/';
@@ -18,9 +20,13 @@ class HomePage extends Component{
     componentDidMount() {
         this.reloadTableData();
     }
-    reloadTableData(){
+    reloadTableData(searchValue=''){
+        let url = API + 'product/';
+        if(searchValue){
+            url += '?search=' + searchValue;
+        }
         console.log("Reloding Table");
-        axios.get(API + 'product/')
+        axios.get(url)
         .then(result => {
             this.setState({
             tableData: result.data
@@ -36,11 +42,16 @@ class HomePage extends Component{
                         <BookButton reloadTable={this.reloadTableData}></BookButton>
                     </Col>
                     <Col lg={6}>
-                        <BookButton reloadTable={this.reloadTableData} className="btn-return"></BookButton>
+                        <ReturnButton reloadTable={this.reloadTableData}></ReturnButton>
                     </Col>
                 </Row>
                 <Row className="table">
-                    <ReantalTable tableData={this.state.tableData}></ReantalTable>
+                    <Col lg={12}>
+                        <SearchButton searchTableData={this.reloadTableData}></SearchButton>
+                    </Col>
+                    <Col lg={12}>
+                        <ReantalTable tableData={this.state.tableData}></ReantalTable>
+                    </Col>
                 </Row>
                 <ToastComponent/>
             </Container>
