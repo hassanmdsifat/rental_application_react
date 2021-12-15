@@ -35,7 +35,7 @@ class HomePage extends Component{
     render(){
         return (
             <Container>
-                <Row className="mt-2 pt-2 btn-div">
+                <Row className="mt-2 btn-div">
                     <Col lg={6}>
                         <BookButton reloadTable={this.reloadTableData}></BookButton>
                     </Col>
